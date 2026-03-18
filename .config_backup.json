@@ -1,0 +1,49 @@
+{
+  "dataset": {
+    "name": "MNIST",
+    "data_dir": "./data",
+    "download": true,
+    "num_workers": 2,
+    "pin_memory": false,
+    "train_split": true
+  },
+  "model": {
+    "type": "mlp",
+    "input_channels": 1,
+    "num_classes": 10,
+    "hidden_sizes": [256, 128, 64],
+    "dropout": 0.2,
+    "cnn_channels": [32, 64],
+    "cnn_kernel_size": 3
+  },
+  "training": {
+    "batch_size": 64,
+    "epochs": 5,
+    "learning_rate": 0.001,
+    "optimizer": "adam",
+    "weight_decay": 0.0,
+    "momentum": 0.9,
+    "loss": "cross_entropy",
+    "device": "auto",
+    "save_path": "model.pth",
+    "log_every": 100,
+    "seed": 42,
+    "gradient_clip": 0.0
+  },
+  "scheduler": {
+    "enabled": true,
+    "type": "step",
+    "step_size": 2,
+    "gamma": 0.5
+  },
+  "transforms": {
+    "normalize": true,
+    "mean": [0.1307],
+    "std": [0.3081],
+    "random_rotation": 10,
+    "horizontal_flip": false
+  },
+  "evaluation": {
+    "run_test": true
+  }
+}
